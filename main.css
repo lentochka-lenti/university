@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+}
+
+a {
+    background: #0052CC;
+    padding: 5px 10px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+header {
+    text-align: center;
+    background: #4CAF50;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #f2f2f2;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 40px !important;
+}
+
+footer {
+    font-size: 14px;
+    text-align: center;
+    width: 1200px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    background: #4CAF50;
+    padding-bottom: 15px;
+    position: absolute;
+    bottom: 0;
+    color: #f2f2f2;
+    margin-top: 40px !important;
+}
+
+.login-wrap {
+    width: 300px;
+    margin: 15% auto 0;
+}
+
+.site-control {
+    padding-left: 15px;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-btn-wrap {
+    text-align: center;
+}
+
+.site-btn {
+    background: #00f;
+    color: #fff;
+    padding: 5px 15px;
+    border: 1px solid #000000;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+}
+
+.site-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.site-table td, .site-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.site-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.site-table tr:hover {
+    background-color: #ddd;
+}
+
+.site-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.lessons-wrap,
+.lesson-wrap,
+.lesson-edit-wrap,
+header {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+.logout-link {
+    float: right;
+}
