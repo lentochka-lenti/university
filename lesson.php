@@ -12,12 +12,15 @@ if (isset($_SESSION['login'])) {
         $results = $db->query('SELECT * FROM lesson');
         $lessons = array();
         while ($row = $results->fetchArray()) {
-            $lesson = array(
-                'id' => $row['id'],
-                'subject' => $row['subject'],
-                'time' => $row['time'],
-                'room' =>  $row['room']
-            );
+            if($_GET['lesson_id']  ==  $row['id']){
+                $lesson = array(
+                    'id' => $row['id'],
+                    'subject' => $row['subject'],
+                    'time' => $row['time'],
+                    'room' =>  $row['room']
+                );
+                break;
+            }
         }
     }
 } else {
