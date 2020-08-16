@@ -9,4 +9,10 @@
 <header>
     Университет
 </header>
-<p> Пользователь: <b><?php session_start(); echo $_SESSION['FIO']; ?></b></p>
+<p> Пользователь: <b>
+<?php session_start();  
+    if (isset($_SESSION['FIO'])) {
+        echo $_SESSION['FIO']; 
+    }else{
+        echo "Aдминистратор"; 
+    } ?></b></p>

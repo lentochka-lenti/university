@@ -13,6 +13,7 @@
             <input class="site-control" type="password" name="password" value="" placeholder="Пароль">
             <div class="form-btn-wrap">
                 <button class="site-btn" type="submit">Войти</button>
+                <a class="simpe-url" href="register_client_page.php">Зарегистрироваться</a>
             </div>
         <form>
     </div>

@@ -9,6 +9,13 @@ a {
     text-decoration: none;
 }
 
+.simpe-url {
+    background:initial;
+    color: #0052CC;
+    font-size: 14px;
+    vertical-align: bottom;
+}
+
 header {
     text-align: center;
     background: #4CAF50;
