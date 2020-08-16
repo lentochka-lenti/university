@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Университет</title>
@@ -9,3 +9,4 @@
 <header>
     Университет
 </header>
+<p> Пользователь: <b><?php session_start(); echo $_SESSION['FIO']; ?></b></p>

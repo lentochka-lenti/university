@@ -1,4 +1,6 @@
 <?php
+include("common.php");
+
 session_start();
 if (isset($_SESSION['login'])) {
     $lesson = array(
@@ -8,10 +10,10 @@ if (isset($_SESSION['login'])) {
       'room' => ''
     );
     if((int)$_GET['lesson_id'] > 0) {
-        $db = new SQLite3('db.db');
-        $results = $db->query('SELECT * FROM lesson');
+        $db = connect_to_mysql();
+        $results = $db->query('SELECT * FROM lessons');
         $lessons = array();
-        while ($row = $results->fetchArray()) {
+        while ($row = $results->fetch_array()) {
             if($_GET['lesson_id']  ==  $row['id']){
                 $lesson = array(
                     'id' => $row['id'],

@@ -1,10 +1,12 @@
 <?php
+include("common.php");
+
 session_start();
 if (isset($_SESSION['login'])) {
-    $db = new SQLite3('db.db');
-    $results = $db->query('SELECT * FROM lesson');
+    $db = connect_to_mysql();
+    $results = $db->query('SELECT lessons.*, count(records.lessons_id) as count_users FROM lessons LEFT JOIN records ON lessons.id=records.lessons_id GROUP BY lessons.id');
     $lessons = array();
-    while ($row = $results->fetchArray()) {
+    while ($row = $results->fetch_array()) {
         $lessons[] = $row;
     }
 } else {
@@ -25,7 +27,8 @@ if (isset($_SESSION['login'])) {
             <th>No</th>
             <th>Предмет</th>
             <th>Время</th>
-            <th>Аудитория</th>
+            <th>Аудитория</th> 
+            <th>Количество<br/>записавшихся</th>
             <th>Действия</th>
         </tr>
         </thead>
@@ -36,6 +39,7 @@ if (isset($_SESSION['login'])) {
             <td><?php echo $lesson['subject'] ?></td>
             <td><?php echo $lesson['time'] ?></td>
             <td><?php echo $lesson['room'] ?></td>
+            <td><?php echo $lesson['count_users'] ?></td>
             <td>
                 <a href="lesson_remove.php?lesson_id=<?php echo $lesson['id'] ?>">Удалить</a>&nbsp;|&nbsp;
                 <a href="lesson.php?lesson_id=<?php echo $lesson['id'] ?>">Редактировать</a>

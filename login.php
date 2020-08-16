@@ -1,4 +1,6 @@
 <?php
+include("common.php");
+session_start();
 if (isset($_POST['login']) && !empty($_POST['password'])) {
     $isAdmin = false;
     $isClient = false;
@@ -6,12 +8,19 @@ if (isset($_POST['login']) && !empty($_POST['password'])) {
         $isAdmin = true;
         $isUser = false;
     }
-    if($_POST['login'] == 'user' && $_POST['password'] == 'user') {
-        $isAdmin = false;
-        $isUser = true;
+    // Check users by users table.
+    $db = connect_to_mysql();
+    $results = $db->query('SELECT * FROM users');
+    while ($row = $results->fetch_array()) {
+        if($_POST['login'] == $row['login'] && $_POST['password'] == $row['password']) {
+            $isAdmin = false;
+            $isUser = true;
+            $_SESSION['FIO'] = $row['FIO'];
+            $_SESSION['user_id']  = $row['id'];
+        }
     }
+                
     if($isAdmin || $isUser) {
-        session_start();
         $_SESSION['login'] = 1;
         if($isUser) {
             header("Status: 301 Moved Permanently");

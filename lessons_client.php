@@ -1,10 +1,13 @@
 <?php
+include("common.php");
 session_start();
+
 if (isset($_SESSION['login'])) {
-    $db = new SQLite3('db.db');
-    $results = $db->query('SELECT * FROM lesson');
+    $db =  connect_to_mysql();
+    $sqlquery='SELECT lessons.*,  count(records.lessons_id)>0 as is_described FROM lessons LEFT JOIN records ON lessons.id=records.lessons_id and records.user_id='. $_SESSION['user_id'] .' GROUP BY lessons.id';
+    $results = $db->query($sqlquery);
     $lessons = array();
-    while ($row = $results->fetchArray()) {
+    while ($row = $results->fetch_array()) {
         $lessons[] = $row;
     }
 } else {
@@ -25,6 +28,7 @@ if (isset($_SESSION['login'])) {
             <th>Предмет</th>
             <th>Время</th>
             <th>Аудитория</th>
+            <th>Действие</th>
         </tr>
         </thead>
         <tbody>
@@ -34,6 +38,11 @@ if (isset($_SESSION['login'])) {
                     <td><?php echo $lesson['subject'] ?></td>
                     <td><?php echo $lesson['time'] ?></td>
                     <td><?php echo $lesson['room'] ?></td>
+                    <td><?php if($lesson['is_described']){ ?> 
+                                  <a style="background-color: red;" href="lesson_unsubscribe.php?lesson_id=<?php echo $lesson['id'] ?>">Отписаться</a>
+                        <?php }else{ ?>
+                                  <a href="lesson_subscribe.php?lesson_id=<?php echo $lesson['id'] ?>">Подписаться</a>
+                        <?php } ?></td>
                 </tr>
             <?php } ?>
         </tbody>
