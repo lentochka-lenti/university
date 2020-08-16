@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title 1</title>
+    <title>Дипломная работа Шабаловской Елены (ИС-17)</title>
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
