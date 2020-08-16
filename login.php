@@ -9,10 +9,17 @@ if (isset($_POST['login']) && !empty($_POST['password'])) {
         $isUser = false;
     }
     // Check users by users table.
+    // Подключение к базе данных
     $db = connect_to_mysql();
+    // Выполнение запроса на получение данных о пользователях
     $results = $db->query('SELECT * FROM users');
+    // Проходим по списку зарегистррированных пользователй
     while ($row = $results->fetch_array()) {
+        // Проверяем правильно ли введены данные для авторизации
         if($_POST['login'] == $row['login'] && $_POST['password'] == $row['password']) {
+            // Если пользователь ввел правильные данные для авторизации то:
+            // 1 Запомниаем ФИО пользователя в сессии для вывода на каждой странице.
+            // 2 Запоминаем id пользователя для выполнения запросов связаннных с текущим пользователем
             $isAdmin = false;
             $isUser = true;
             $_SESSION['FIO'] = $row['FIO'];
