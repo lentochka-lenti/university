@@ -1,6 +1,8 @@
 <?php
 include("common.php");
 session_start();
+session_destroy();
+session_start();
 if (isset($_POST['login']) && !empty($_POST['password'])) {
     $isAdmin = false;
     $isClient = false;
