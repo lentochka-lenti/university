@@ -30,7 +30,6 @@ header {
 footer {
     font-size: 14px;
     text-align: center;
-    width: 1200px;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -103,7 +102,6 @@ footer {
 .lesson-wrap,
 .lesson-edit-wrap,
 header {
-    width: 1200px;
     margin: 0 auto;
 }
 
